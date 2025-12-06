@@ -440,7 +440,6 @@
       box-sizing: border-box;
     }
 
-    /* contenedor específico para los 80 criterios */
     .criterios-container {
       min-height: 260px;
       max-height: 320px;
@@ -1112,7 +1111,7 @@
       }
     }
 
-    /* IMPRESIÓN A4: sin faldón izquierdo */
+    /* IMPRESIÓN A4: sin faldón izquierdo y cada módulo en una página */
     @page {
       size: A4 portrait;
       margin: 10mm;
@@ -1141,22 +1140,29 @@
         max-width:none !important;
         overflow:visible !important;
       }
-      .pages,
+      .pages {
+        display:block !important;
+        gap:0 !important;
+      }
       .page {
+        display:block !important;
         overflow:visible !important;
+        margin:0 0 8mm 0 !important;
+        page-break-after: always;
       }
       .dashboard-grid {
         grid-template-columns: 1fr !important;
       }
       .panel-graficos {
         max-height:none !important;
-        overflow:visible !Important;
+        overflow:visible !important;
       }
       .card {
         box-shadow:none !important;
         border-color:#d1d5db !important;
         break-inside: avoid;
         page-break-inside: avoid;
+        margin-bottom:4mm !important;
       }
     }
   </style>
@@ -1348,7 +1354,7 @@
                 <span class="card-title">Evaluación detallada de procesos (80 criterios)</span>
                 <span class="badge-small">Se actualiza con los checklists CORNER / EXCLUSIVO</span>
               </div>
-              <div class="card-sub" id="criteriosEmptyMsg">
+              <div class="card-sub" id="criteriosEmptyMsg" style="display:none;">
                 Adjunta un checklist en el informe de la visita y guarda el informe para ver el detalle por criterios.
               </div>
               <div class="chart-container criterios-container">
@@ -1954,7 +1960,7 @@
           <td><span class="tag ${t === 'Exclusivo' ? 'exclusivo' : 'corner'}">${t}</span></td>
           <td>
             <button class="btn-link btn-informe-centro" data-centro="${c.centro}">
-              ${informes ? \`Ver (\${informes})\` : "Añadir informe"}
+              ${informes ? `Ver (${informes})` : "Añadir informe"}
             </button>
           </td>
           <td>
@@ -2503,6 +2509,35 @@
     }
 
     const clampPct = v => Math.max(0, Math.min(100, v));
+
+    // DEMO: sembrar criterios ficticios para que el gráfico se vea desde el inicio
+    function seedDemoCriterios() {
+      const demo = [
+        "Saludo protocolizado",
+        "Detección necesidades",
+        "Explicación proceso audiológico",
+        "Uso de materiales demostrativos",
+        "Cierre y próxima cita",
+        "Explicación financiación",
+        "Registro en CRM",
+        "Entrega documentación AAR",
+        "Seguimiento a los 7 días",
+        "Seguimiento a los 30 días",
+        "Derivación a ORL cuando procede",
+        "Uso de Telecare / remoto",
+        "Actualización escaparate audio",
+        "Uso de test de lectura",
+        "Screening en óptica"
+      ];
+      demo.forEach((nombre, idx) => {
+        const pct = 70 + (idx * 2); // 70–98 %
+        criteriosGlobal.set(nombre, {
+          nombre,
+          suma: pct,
+          total: 100
+        });
+      });
+    }
 
     function actualizarGraficoCriterios() {
       const msg = $("#criteriosEmptyMsg");
@@ -3556,6 +3591,11 @@
       cargarCentrosDemo();
       initCalendar();
       initDashboardCharts();
+
+      // seed demo criterios (para ver el gráfico de 80 criterios desde el principio)
+      seedDemoCriterios();
+      actualizarGraficoCriterios();
+
       cargarInformesDesdeLocal();
     });
   </script>
