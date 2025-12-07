@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Control Center Audio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -512,7 +512,7 @@
       color: var(--text-main);
     }
 
-    /* CENTROS PAGE Y DEMÁS */
+    /* CENTROS PAGE */
     .centros-top {
       display: grid;
       grid-template-columns: 1.2fr 1.2fr 1fr;
@@ -879,6 +879,21 @@
       outline:none;
     }
 
+    /* NUEVO: radios Corner / Exclusivo */
+    .field-radio-group {
+      display:flex;
+      gap:8px;
+      align-items:center;
+      font-size:.78rem;
+      margin-top:2px;
+    }
+    .field-radio-group label {
+      display:flex;
+      align-items:center;
+      gap:4px;
+      cursor:pointer;
+    }
+
     .panel-graficos {
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -1065,13 +1080,6 @@
       background:#ffffff;
     }
 
-    .radio-small {
-      font-size:.74rem;
-      display:inline-flex;
-      align-items:center;
-      gap:3px;
-    }
-
     /* RESPONSIVE */
     @media (max-width: 1400px) {
       .dashboard-grid {
@@ -1215,7 +1223,7 @@
     <div class="topbar">
       <div class="topbar-search">
         <span>🔍</span>
-        <input id="searchGlobal" placeholder="Buscar por centro, propietario o delegado...">
+        <input id="searchGlobal" placeholder="Buscar por centro, propietario o delegado..." />
       </div>
       <div class="topbar-buttons">
         <button class="btn" id="themeToggle">
@@ -1403,7 +1411,7 @@
               <button class="btn" id="btnAdjuntarExcel">
                 <span class="icon">📤</span> Adjuntar centros (Excel)
               </button>
-              <input type="file" id="inputExcel" accept=".xlsx,.xls" style="display:none">
+              <input type="file" id="inputExcel" accept=".xlsx,.xls" style="display:none" />
             </div>
 
             <div style="margin-top:4px; font-size:.74rem; color:var(--text-muted);">
@@ -1478,51 +1486,52 @@
               <div class="datos-grid">
                 <div>
                   <div class="dato-label">Centro</div>
-                  <input id="infCentro" class="field-input" readonly>
+                  <input id="infCentro" class="field-input" readonly />
                 </div>
                 <div>
                   <div class="dato-label">Provincia</div>
-                  <input id="infProvincia" class="field-input" readonly>
+                  <input id="infProvincia" class="field-input" readonly />
                 </div>
                 <div>
                   <div class="dato-label">Delegado</div>
-                  <input id="infDelegado" class="field-input" readonly>
+                  <input id="infDelegado" class="field-input" readonly />
                 </div>
                 <div>
                   <div class="dato-label">Tipo</div>
-                  <input id="infTipo" class="field-input" readonly>
+                  <input id="infTipo" class="field-input" readonly />
                 </div>
                 <div>
                   <div class="dato-label">Responsable audio</div>
-                  <input id="infRespAudio" class="field-input" readonly>
+                  <input id="infRespAudio" class="field-input" readonly />
                 </div>
                 <div>
                   <div class="dato-label">Fecha visita</div>
-                  <input id="infFecha" class="field-input" readonly>
+                  <input id="infFecha" class="field-input" readonly />
                 </div>
+
+                <!-- NUEVO: selector Corner / Exclusivo -->
+                <div>
+                  <div class="dato-label">Tipo checklist</div>
+                  <div class="field-radio-group">
+                    <label><input type="radio" name="tipoChecklist" value="CORNER" checked> Corner</label>
+                    <label><input type="radio" name="tipoChecklist" value="EXCLUSIVO"> Exclusivo</label>
+                  </div>
+                </div>
+
                 <div>
                   <div class="dato-label">Audiólogo</div>
-                  <input id="infAudiologo" class="field-input">
+                  <input id="infAudiologo" class="field-input" />
                 </div>
                 <div>
                   <div class="dato-label">Horas de servicio</div>
-                  <input id="infHoras" class="field-input">
+                  <input id="infHoras" class="field-input" />
                 </div>
                 <div class="dato-full" style="margin-top:4px;">
-                  <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
-                    <button class="btn btn-cta" id="btnAdjuntarChecklist">
-                      <span class="icon">📎</span> Adjuntar checklist
-                    </button>
-                    <input type="file" id="inputChecklist" accept=".xlsx,.xls" style="display:none">
-                    <span id="nombreChecklist" style="font-size:.74rem; color:var(--text-muted);"></span>
-                    <span style="font-size:.74rem; margin-left:4px;">Tipo checklist:</span>
-                    <label class="radio-small">
-                      <input type="radio" name="tipoChecklist" value="corner" checked> Corner
-                    </label>
-                    <label class="radio-small">
-                      <input type="radio" name="tipoChecklist" value="exclusivo"> Exclusivo
-                    </label>
-                  </div>
+                  <button class="btn btn-cta" id="btnAdjuntarChecklist">
+                    <span class="icon">📎</span> Adjuntar checklist
+                  </button>
+                  <input type="file" id="inputChecklist" accept=".xlsx,.xls" style="display:none" />
+                  <span id="nombreChecklist" style="margin-left:8px; font-size:.74rem; color:var(--text-muted);"></span>
                 </div>
               </div>
             </article>
@@ -1561,7 +1570,7 @@
               </div>
               <div class="chart-container">
                 <canvas id="chartCentroSiNoDonut"></canvas>
-             div>
+              </div>
             </article>
 
             <article class="card">
@@ -1608,27 +1617,27 @@
                 <span class="card-title">Formaciones y habilidades</span>
               </div>
               <div class="checklist-visita" style="margin-top:6px;">
-                <label><input type="checkbox" data-kpi="wsa"> WSA</label>
-                <label><input type="checkbox" data-kpi="starkey"> Starkey</label>
-                <label><input type="checkbox" data-kpi="neuroventas"> Habilidades comerciales / Neuroventas</label>
-                <label><input type="checkbox" data-kpi="hit"> HIT</label>
-                <label><input type="checkbox" data-kpi="telecare"> Telecare</label>
-                <label><input type="checkbox" data-kpi="pia"> PIA</label>
-                <label><input type="checkbox" data-kpi="telehear"> Telehear</label>
-                <label><input type="checkbox" data-kpi="infinity"> Financiación Infinity</label>
-                <label><input type="checkbox" data-kpi="seguros"> Venta de seguro</label>
-                <label><input type="checkbox" data-kpi="primeros"> Primeros auxilios (equipo)</label>
+                <label><input type="checkbox" data-kpi="wsa" /> WSA</label>
+                <label><input type="checkbox" data-kpi="starkey" /> Starkey</label>
+                <label><input type="checkbox" data-kpi="neuroventas" /> Habilidades comerciales / Neuroventas</label>
+                <label><input type="checkbox" data-kpi="hit" /> HIT</label>
+                <label><input type="checkbox" data-kpi="telecare" /> Telecare</label>
+                <label><input type="checkbox" data-kpi="pia" /> PIA</label>
+                <label><input type="checkbox" data-kpi="telehear" /> Telehear</label>
+                <label><input type="checkbox" data-kpi="infinity" /> Financiación Infinity</label>
+                <label><input type="checkbox" data-kpi="seguros" /> Venta de seguro</label>
+                <label><input type="checkbox" data-kpi="primeros" /> Primeros auxilios (equipo)</label>
                 <div class="checklist-heading">Producto y comunicación</div>
-                <label><input type="checkbox" data-kpi="rt"> Audiometría RT</label>
-                <label><input type="checkbox" data-kpi="audio_test"> Test de lectura audio</label>
-                <label><input type="checkbox" data-kpi="audio_screening"> Screening audio</label>
-                <label><input type="checkbox" data-kpi="audio_manteleta"> Manteleta audio</label>
-                <label><input type="checkbox" data-kpi="audio_escaparate"> Escaparate visible audio</label>
-                <label><input type="checkbox" data-kpi="audio_salud"> Salud auditiva en PDV</label>
-                <label><input type="checkbox" data-kpi="audio_renove"> Elementos Renove</label>
-                <label><input type="checkbox" data-kpi="mgm"> Elementos MGM</label>
-                <label><input type="checkbox" data-kpi="stock"> Stock</label>
-                <label><input type="checkbox" data-kpi="tchin"> Tchin Tchin</label>
+                <label><input type="checkbox" data-kpi="rt" /> Audiometría RT</label>
+                <label><input type="checkbox" data-kpi="audio_test" /> Test de lectura audio</label>
+                <label><input type="checkbox" data-kpi="audio_screening" /> Screening audio</label>
+                <label><input type="checkbox" data-kpi="audio_manteleta" /> Manteleta audio</label>
+                <label><input type="checkbox" data-kpi="audio_escaparate" /> Escaparate visible audio</label>
+                <label><input type="checkbox" data-kpi="audio_salud" /> Salud auditiva en PDV</label>
+                <label><input type="checkbox" data-kpi="audio_renove" /> Elementos Renove</label>
+                <label><input type="checkbox" data-kpi="mgm" /> Elementos MGM</label>
+                <label><input type="checkbox" data-kpi="stock" /> Stock</label>
+                <label><input type="checkbox" data-kpi="tchin" /> Tchin Tchin</label>
               </div>
             </article>
 
@@ -1642,21 +1651,21 @@
                   <div class="imagen-preview" data-target="ext">
                     Adjuntar imagen
                   </div>
-                  <input type="file" accept="image/*" data-input-img="ext" style="display:none">
+                  <input type="file" accept="image/*" data-input-img="ext" style="display:none" />
                 </div>
                 <div>
                   <div class="imagen-item-title">Centro interior</div>
                   <div class="imagen-preview" data-target="int">
                     Adjuntar imagen
                   </div>
-                  <input type="file" accept="image/*" data-input-img="int" style="display:none">
+                  <input type="file" accept="image/*" data-input-img="int" style="display:none" />
                 </div>
                 <div>
                   <div class="imagen-item-title">Gabinete</div>
                   <div class="imagen-preview" data-target="gab">
                     Adjuntar imagen
                   </div>
-                  <input type="file" accept="image/*" data-input-img="gab" style="display:none">
+                  <input type="file" accept="image/*" data-input-img="gab" style="display:none" />
                 </div>
               </div>
             </article>
@@ -1757,7 +1766,7 @@
       <div class="modal-body">
         <div class="modal-field">
           <label>Fecha</label>
-          <input id="visitaFecha" readonly>
+          <input id="visitaFecha" readonly />
         </div>
         <div class="modal-field">
           <label>Responsable audio</label>
@@ -1768,7 +1777,7 @@
         </div>
         <div class="modal-field">
           <label>Centro</label>
-          <input id="visitaCentro" list="listaCentros">
+          <input id="visitaCentro" list="listaCentros" />
           <datalist id="listaCentros"></datalist>
         </div>
       </div>
@@ -1788,23 +1797,23 @@
       <div class="modal-body">
         <div class="modal-field">
           <label>Código</label>
-          <input id="nuevoCodigo">
+          <input id="nuevoCodigo" />
         </div>
         <div class="modal-field">
           <label>Propietario</label>
-          <input id="nuevoPropietario">
+          <input id="nuevoPropietario" />
         </div>
         <div class="modal-field">
           <label>Centro</label>
-          <input id="nuevoCentro">
+          <input id="nuevoCentro" />
         </div>
         <div class="modal-field">
           <label>Provincia</label>
-          <input id="nuevoProvincia">
+          <input id="nuevoProvincia" />
         </div>
         <div class="modal-field">
           <label>Delegado</label>
-          <input id="nuevoDelegado">
+          <input id="nuevoDelegado" />
         </div>
       </div>
       <div class="modal-footer">
@@ -1815,7 +1824,8 @@
   </div>
 
   <script>
-    const $  = sel => document.querySelector(sel);
+    // Helpers
+    const $ = sel => document.querySelector(sel);
     const $$ = sel => Array.from(document.querySelectorAll(sel));
 
     function formatDateISO(d) {
@@ -1829,41 +1839,7 @@
       return `${d}-${m}-${y}`;
     }
 
-    /* NAV */
-    const pages = $$(".page");
-    $$(".nav-item").forEach(item => {
-      item.addEventListener("click", () => {
-        const page = item.dataset.page;
-        $$(".nav-item").forEach(i => i.classList.toggle("active", i === item));
-        pages.forEach(p => p.classList.toggle("active", p.dataset.page === page));
-      });
-    });
-
-    /* TEMA */
-    $("#themeToggle").addEventListener("click", () => {
-      document.body.classList.toggle("light");
-      Object.values(globalCharts).forEach(ch => ch && ch.resize());
-      if (centroChartsCreated) Object.values(centroCharts).forEach(ch => ch && ch.resize());
-    });
-
-    /* BOTONES TOPBAR */
-    $("#btnGuardarVista").addEventListener("click", () => alert("Guardar vista (demo)."));
-    $("#btnActualizarNube").addEventListener("click", () => alert("Actualización a nube (demo)."));
-    $("#btnImprimir").addEventListener("click", () => window.print());
-    $("#btnExportarHTML").addEventListener("click", () => {
-      const content = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
-      const blob = new Blob([content], {type:"text/html"});
-      const url  = URL.createObjectURL(blob);
-      const a    = document.createElement("a");
-      a.href = url;
-      a.download = "control-center-audio.html";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    });
-
-    /* DATOS */
+    // Datos base
     const exclusivosSet = new Set([
       "CC LOS VALLES",
       "FUENLABRADA Calle Leganes",
@@ -1882,8 +1858,9 @@
     const aarPorCentro = {};
     const delegadosColores = {};
     const colorPalette = [
-      "#22c55e","#2563eb","#14b8a6","#a855f7","#f97316","#0ea5e9","#ef4444",
-      "#eab308","#ec4899","#facc15","#22d3ee","#4ade80","#fb7185","#2dd4bf"
+      "#22c55e","#2563eb","#14b8a6","#a855f7","#f97316",
+      "#0ea5e9","#ef4444","#eab308","#ec4899","#facc15",
+      "#22d3ee","#4ade80","#fb7185","#2dd4bf"
     ];
 
     function getColorForDelegado(nombre) {
@@ -1894,13 +1871,37 @@
       return delegadosColores[nombre];
     }
 
-    /* TABLA CENTROS */
-    const tablaBody = $("#tablaCentrosBody");
-    const totalCentrosLabel = $("#totalCentrosLabel");
-    const centrosMostradosSpan = $("#centrosMostrados");
-    const centrosTotalSpan = $("#centrosTotal");
+    // Estado global KPIs (acumulado de informes guardados)
+    const dashboardAcum = {
+      procesos: 0,
+      convPrueba: 0,
+      convVenta: 0,
+      hit: 0,
+      formaciones: 0,
+      ayuda: 0,
+      aar: 0,
+      primeros: 0,
+      n: 0
+    };
+
+    // Criterios globales 80 procesos
+    const criteriosGlobal = {}; // nombre -> {sumaAplica, total}
+
+    // Charts
+    const globalCharts = {};
+    const centroCharts = {};
+    let centroChartsCreated = false;
+
+    // Filtros
     let filtroDelegadoActual = null;
     let filtroTextoActual = "";
+
+    // Visitas / informe
+    const visitas = [];
+    let visitaActual = null;
+    let centroActual = null;
+    let ultimoChecklistCentro = null;
+    let centroMetricsActual = null;
 
     function tipoCentro(nombreCentro) {
       return exclusivosSet.has(nombreCentro) ? "Exclusivo" : "Corner";
@@ -1913,9 +1914,60 @@
       return aarPorCentro[nombreCentro] || "No";
     }
 
+    // NAV
+    function initNav() {
+      const pages = $$(".page");
+      $$(".nav-item").forEach(item => {
+        item.addEventListener("click", () => {
+          const page = item.dataset.page;
+          $$(".nav-item").forEach(i => i.classList.toggle("active", i === item));
+          pages.forEach(p => p.classList.toggle("active", p.dataset.page === page));
+        });
+      });
+    }
+
+    // Tema
+    function initTheme() {
+      $("#themeToggle").addEventListener("click", () => {
+        document.body.classList.toggle("light");
+        Object.values(globalCharts).forEach(ch => ch && ch.resize());
+        if (centroChartsCreated) Object.values(centroCharts).forEach(ch => ch && ch.resize());
+      });
+    }
+
+    // Topbar
+    function initTopbar() {
+      $("#btnGuardarVista").addEventListener("click", () => alert("Guardar vista (demo)."));
+      $("#btnActualizarNube").addEventListener("click", () => alert("Actualización a nube (demo)."));
+      $("#btnImprimir").addEventListener("click", () => window.print());
+      $("#btnExportarHTML").addEventListener("click", () => {
+        const content = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+        const blob = new Blob([content], {type:"text/html"});
+        const url  = URL.createObjectURL(blob);
+        const a    = document.createElement("a");
+        a.href = url;
+        a.download = "control-center-audio.html";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+
+      $("#searchGlobal").addEventListener("input", e => {
+        filtroTextoActual = e.target.value || "";
+        renderTablaCentros();
+      });
+    }
+
+    // Tabla centros
     function renderTablaCentros() {
-      const texto = filtroTextoActual.toLowerCase();
+      const tablaBody = $("#tablaCentrosBody");
+      const totalCentrosLabel = $("#totalCentrosLabel");
+      const centrosMostradosSpan = $("#centrosMostrados");
+      const centrosTotalSpan = $("#centrosTotal");
+
       tablaBody.innerHTML = "";
+      const texto = filtroTextoActual.toLowerCase();
       const filtrados = centros.filter(c => {
         const cad = (c.centro + " " + c.propietario + " " + c.delegado).toLowerCase();
         const pasaTexto = cad.includes(texto);
@@ -1928,41 +1980,31 @@
         const t  = tipoCentro(c.centro);
         const informes = getInformes(c.centro);
         const aarEstado = getAarEstado(c.centro);
-        tr.innerHTML = `
-          <td>${c.codigo}</td>
-          <td>${c.propietario}</td>
-          <td>${c.centro}</td>
-          <td>${c.provincia}</td>
-          <td>${c.delegado}</td>
-          <td><span class="tag ${t === 'Exclusivo' ? 'exclusivo' : 'corner'}">${t}</span></td>
-          <td>
-            <button class="btn-link btn-informe-centro" data-centro="${c.centro}">
-              ${informes ? \`Ver (\${informes})\` : "Añadir informe"}
-            </button>
-          </td>
-          <td>
-            <span class="tag tag-aar ${
-              aarEstado === 'Sí' ? 'si' :
-              aarEstado === 'En formación' ? 'formacion' : ''
-            }">${aarEstado}</span>
-          </td>
-        `;
+        tr.innerHTML =
+          "<td>" + c.codigo + "</td>" +
+          "<td>" + c.propietario + "</td>" +
+          "<td>" + c.centro + "</td>" +
+          "<td>" + c.provincia + "</td>" +
+          "<td>" + c.delegado + "</td>" +
+          "<td><span class=\"tag " + (t === "Exclusivo" ? "exclusivo" : "corner") + "\">" + t + "</span></td>" +
+          "<td><button class=\"btn-link btn-informe-centro\" data-centro=\"" + c.centro + "\">" +
+          (informes ? ("Ver (" + informes + ")") : "Añadir informe") +
+          "</button></td>" +
+          "<td><span class=\"tag tag-aar " +
+          (aarEstado === "Sí" ? "si" : (aarEstado === "En formación" ? "formacion" : "")) +
+          "\">" + aarEstado + "</span></td>";
         tablaBody.appendChild(tr);
       });
 
-      totalCentrosLabel.textContent = `Centros mostrados: ${filtrados.length} / ${centros.length}`;
+      totalCentrosLabel.textContent = "Centros mostrados: " + filtrados.length + " / " + centros.length;
       centrosMostradosSpan.textContent = filtrados.length;
       centrosTotalSpan.textContent = centros.length;
     }
 
-    /* DELEGADOS + RANKING */
-    const delegadosList = $("#delegadosList");
-    const numDelegadosSpan = $("#numDelegados");
-    const rankingDelegadosDiv = $("#rankingDelegados");
-    const rankingToggle = $("#rankingToggle");
-    let rankingExpandido = false;
-
+    // Delegados + ranking
     function renderDelegados() {
+      const delegadosList = $("#delegadosList");
+      const numDelegadosSpan = $("#numDelegados");
       const map = new Map();
       centros.forEach(c => {
         if (!map.has(c.delegado)) map.set(c.delegado, []);
@@ -1977,16 +2019,15 @@
         card.className = "delegado-card";
         card.dataset.delegado = nombre;
         const color = getColorForDelegado(nombre);
-        card.innerHTML = `
-          <div class="delegado-header">
-            <div class="delegado-main">
-              <span class="delegado-color" style="background:${color}"></span>
-              <span>${nombre}</span>
-            </div>
-            <span class="delegado-count">${lista.length} centros</span>
-          </div>
-          <div class="delegado-bar"><span style="background:${color}"></span></div>
-        `;
+        card.innerHTML =
+          "<div class=\"delegado-header\">" +
+            "<div class=\"delegado-main\">" +
+              "<span class=\"delegado-color\" style=\"background:" + color + "\"></span>" +
+              "<span>" + nombre + "</span>" +
+            "</div>" +
+            "<span class=\"delegado-count\">" + lista.length + " centros</span>" +
+          "</div>" +
+          "<div class=\"delegado-bar\"><span style=\"background:" + color + "\"></span></div>";
         card.addEventListener("click", () => {
           if (filtroDelegadoActual === nombre) {
             filtroDelegadoActual = null;
@@ -2006,6 +2047,11 @@
     }
 
     function renderRankingDelegados(map) {
+      const rankingDelegadosDiv = $("#rankingDelegados");
+      const rankingToggle = $("#rankingToggle");
+      const topSpan   = $("#rankingTopDelegado");
+      const mediaSpan = $("#rankingMediaProcesos");
+
       rankingDelegadosDiv.innerHTML = "";
       const arr = Array.from(map.entries()).map(([nombre, lista]) => {
         const procesos = 80 + Math.floor(Math.random()*15);
@@ -2019,25 +2065,22 @@
         row.className = "ranking-row";
         if (idx >= 5) row.classList.add("extra-hidden");
         const color = getColorForDelegado(d.nombre);
-        row.innerHTML = `
-          <div class="ranking-main">
-            <span style="font-size:.75rem; color:var(--text-muted);">${idx+1}.</span>
-            <span class="delegado-color" style="background:${color}"></span>
-            <span>${d.nombre}</span>
-          </div>
-          <div style="flex:1; display:flex; align-items:center; gap:4px; margin-left:6px;">
-            <div class="ranking-bar"><span style="width:${d.score}%; background:${color}"></span></div>
-            <span style="font-size:.72rem;">${d.score}</span>
-          </div>
-        `;
+        row.innerHTML =
+          "<div class=\"ranking-main\">" +
+            "<span style=\"font-size:.75rem; color:var(--text-muted);\">" + (idx+1) + ".</span>" +
+            "<span class=\"delegado-color\" style=\"background:" + color + "\"></span>" +
+            "<span>" + d.nombre + "</span>" +
+          "</div>" +
+          "<div style=\"flex:1; display:flex; align-items:center; gap:4px; margin-left:6px;\">" +
+            "<div class=\"ranking-bar\"><span style=\"width:" + d.score + "%; background:" + color + "\"></span></div>" +
+            "<span style=\"font-size:.72rem;\">" + d.score + "</span>" +
+          "</div>";
         rankingDelegadosDiv.appendChild(row);
       });
 
       if (arr.length > 5) rankingToggle.style.display = "block";
       else rankingToggle.style.display = "none";
 
-      const topSpan   = $("#rankingTopDelegado");
-      const mediaSpan = $("#rankingMediaProcesos");
       if (arr.length) {
         topSpan.textContent = arr[0].nombre;
         const mediaProc = Math.round(arr.reduce((s,d)=> s + d.procesos, 0) / arr.length);
@@ -2046,83 +2089,16 @@
         topSpan.textContent = "–";
         mediaSpan.textContent = "–";
       }
-    }
 
-    rankingToggle.addEventListener("click", () => {
-      rankingExpandido = !rankingExpandido;
-      $$(".ranking-row.extra-hidden").forEach(r => {
-        r.style.display = rankingExpandido ? "flex" : "none";
-      });
-      rankingToggle.textContent = rankingExpandido ? "Ocultar" : "Mostrar todos";
-    });
-
-    /* BUSCADOR */
-    $("#searchGlobal").addEventListener("input", e => {
-      filtroTextoActual = e.target.value || "";
-      renderTablaCentros();
-    });
-
-    /* EXCEL CENTROS */
-    const inputExcel = $("#inputExcel");
-    $("#btnAdjuntarExcel").addEventListener("click", () => inputExcel.click());
-
-    inputExcel.addEventListener("change", e => {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = evt => {
-        const data = new Uint8Array(evt.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
-        const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-
-        rows.slice(1).forEach(row => {
-          if (!row || row.length < 5) return;
-          const [codigo, propietario, centro, provincia, delegado] = row;
-          if (!centro) return;
-          centros.push({
-            codigo: (codigo || "").toString().trim(),
-            propietario: (propietario || "").toString().trim(),
-            centro: (centro || "").toString().trim(),
-            provincia: (provincia || "").toString().trim(),
-            delegado: (delegado || "").toString().trim(),
-            aar: "No"
-          });
+      let rankingExpandido = false;
+      rankingToggle.onclick = () => {
+        rankingExpandido = !rankingExpandido;
+        $$(".ranking-row.extra-hidden").forEach(r => {
+          r.style.display = rankingExpandido ? "flex" : "none";
         });
-
-        actualizarListaCentrosDatalist();
-        renderTablaCentros();
-        renderDelegados();
+        rankingToggle.textContent = rankingExpandido ? "Ocultar" : "Mostrar todos";
       };
-      reader.readAsArrayBuffer(file);
-    });
-
-    /* NUEVO CENTRO */
-    $("#btnAddCentro").addEventListener("click", () => {
-      $("#nuevoCodigo").value = "";
-      $("#nuevoPropietario").value = "";
-      $("#nuevoCentro").value = "";
-      $("#nuevoProvincia").value = "";
-      $("#nuevoDelegado").value = "";
-      abrirModal("modalCentro");
-    });
-
-    $("#guardarCentro").addEventListener("click", () => {
-      const nuevo = {
-        codigo: $("#nuevoCodigo").value || "NEW",
-        propietario: $("#nuevoPropietario").value || "N/D",
-        centro: $("#nuevoCentro").value || "Centro sin nombre",
-        provincia: $("#nuevoProvincia").value || "N/D",
-        delegado: $("#nuevoDelegado").value || "N/D",
-        aar: "No"
-      };
-      centros.push(nuevo);
-      cerrarModal("modalCentro");
-      renderTablaCentros();
-      renderDelegados();
-      actualizarListaCentrosDatalist();
-    });
+    }
 
     function actualizarListaCentrosDatalist() {
       const dl = $("#listaCentros");
@@ -2134,21 +2110,97 @@
       });
     }
 
-    /* CALENDARIO + VISITAS */
-    const calendarGrid = $("#calendarGrid");
-    const calTitulo    = $("#calTitulo");
-    let calYear, calMonth;
-    const visitas = [];
-    let visitaActual = null;
+    // Excel centros
+    function initExcelCentros() {
+      const inputExcel = $("#inputExcel");
+      $("#btnAdjuntarExcel").addEventListener("click", () => inputExcel.click());
 
+      inputExcel.addEventListener("change", e => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = evt => {
+          const data = new Uint8Array(evt.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const sheetName = workbook.SheetNames[0];
+          const sheet = workbook.Sheets[sheetName];
+          const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+          rows.slice(1).forEach(row => {
+            if (!row || row.length < 5) return;
+            const [codigo, propietario, centro, provincia, delegado] = row;
+            if (!centro) return;
+            centros.push({
+              codigo: (codigo || "").toString().trim(),
+              propietario: (propietario || "").toString().trim(),
+              centro: (centro || "").toString().trim(),
+              provincia: (provincia || "").toString().trim(),
+              delegado: (delegado || "").toString().trim(),
+              aar: "No"
+            });
+          });
+
+          actualizarListaCentrosDatalist();
+          renderTablaCentros();
+          renderDelegados();
+        };
+        reader.readAsArrayBuffer(file);
+      });
+    }
+
+    // Nuevo centro
+    function initNuevoCentro() {
+      $("#btnAddCentro").addEventListener("click", () => {
+        $("#nuevoCodigo").value = "";
+        $("#nuevoPropietario").value = "";
+        $("#nuevoCentro").value = "";
+        $("#nuevoProvincia").value = "";
+        $("#nuevoDelegado").value = "";
+        abrirModal("modalCentro");
+      });
+
+      $("#guardarCentro").addEventListener("click", () => {
+        const nuevo = {
+          codigo: $("#nuevoCodigo").value || "NEW",
+          propietario: $("#nuevoPropietario").value || "N/D",
+          centro: $("#nuevoCentro").value || "Centro sin nombre",
+          provincia: $("#nuevoProvincia").value || "N/D",
+          delegado: $("#nuevoDelegado").value || "N/D",
+          aar: "No"
+        };
+        centros.push(nuevo);
+        cerrarModal("modalCentro");
+        renderTablaCentros();
+        renderDelegados();
+        actualizarListaCentrosDatalist();
+      });
+    }
+
+    // Calendario + visitas
+    let calYear, calMonth;
     function initCalendar() {
       const now = new Date();
       calYear  = now.getFullYear();
       calMonth = now.getMonth();
       drawCalendar();
+
+      $("#calPrev").addEventListener("click", () => {
+        calMonth--;
+        if (calMonth<0){calMonth=11;calYear--;}
+        drawCalendar();
+      });
+      $("#calNext").addEventListener("click", () => {
+        calMonth++;
+        if (calMonth>11){calMonth=0;calYear++;}
+        drawCalendar();
+      });
+
+      $("#btnGuardarVisita").addEventListener("click", guardarVisita);
     }
 
     function drawCalendar() {
+      const calendarGrid = $("#calendarGrid");
+      const calTitulo    = $("#calTitulo");
       calendarGrid.innerHTML = "";
       const first = new Date(calYear, calMonth, 1);
       const dow   = (first.getDay()+6)%7;
@@ -2169,13 +2221,13 @@
           cell.className = "cal-cell";
           const dateIso = formatDateISO(new Date(calYear, calMonth, dayNum));
           cell.dataset.date = dateIso;
-          cell.innerHTML = `<div class="cal-day">${dayNum}</div>`;
+          cell.innerHTML = "<div class=\"cal-day\">" + dayNum + "</div>";
           const v = visitas.find(v=>v.fecha===dateIso);
           if (v) {
             const letter = v.respAudio.startsWith("A") ? "A" : "S";
             const ev = document.createElement("div");
             ev.className = "cal-event";
-            ev.innerHTML = `<span class="cal-dot"></span><span class="cal-letter">${letter}</span>`;
+            ev.innerHTML = "<span class=\"cal-dot\"></span><span class=\"cal-letter\">" + letter + "</span>";
             cell.appendChild(ev);
           }
           cell.addEventListener("click", ()=> abrirModalVisita(dateIso));
@@ -2183,17 +2235,6 @@
         calendarGrid.appendChild(cell);
       }
     }
-
-    $("#calPrev").addEventListener("click", () => {
-      calMonth--;
-      if (calMonth<0){calMonth=11;calYear--;}
-      drawCalendar();
-    });
-    $("#calNext").addEventListener("click", () => {
-      calMonth++;
-      if (calMonth>11){calMonth=0;calYear++;}
-      drawCalendar();
-    });
 
     function abrirModalVisita(fechaIso) {
       $("#visitaFecha").value = formatDateHuman(fechaIso);
@@ -2203,7 +2244,7 @@
       abrirModal("modalVisita");
     }
 
-    $("#btnGuardarVisita").addEventListener("click", () => {
+    function guardarVisita() {
       const iso   = $("#visitaFecha").dataset.iso;
       const resp  = $("#visitaResp").value;
       const centroNombre = $("#visitaCentro").value.trim();
@@ -2220,101 +2261,59 @@
       cerrarModal("modalVisita");
       drawCalendar();
       renderVisitas();
-    });
+    }
 
-    const visitasList = $("#visitasList");
     function renderVisitas() {
+      const visitasList = $("#visitasList");
       visitasList.innerHTML = "";
       visitas.sort((a,b)=>a.fecha.localeCompare(b.fecha));
       visitas.forEach((v, idx) => {
         const row = document.createElement("div");
         row.className = "visita-row";
-        row.innerHTML = `
-          <div class="visita-row-line">
-            <span class="visita-row-main">${formatDateHuman(v.fecha)} · ${v.centro}</span>
-            <span class="chip-estado ${v.estado}">
-              ${v.estado === "pendiente" ? "Pendiente" :
-                 v.estado === "enproceso" ? "En proceso" : "Finalizada"}
-            </span>
-          </div>
-          <div class="visita-row-secondary">
-            Del. ${v.delegado} · Resp. Audio ${v.respAudio}
-          </div>
-          <div class="visita-actions">
-            <button class="btn-chip btn-ir-informe" data-centro="${v.centro}" data-fecha="${v.fecha}" data-idx="${idx}">Informe</button>
-          </div>
-        `;
+        const estadoLabel =
+          v.estado === "pendiente" ? "Pendiente" :
+          v.estado === "enproceso" ? "En proceso" : "Finalizada";
+        row.innerHTML =
+          "<div class=\"visita-row-line\">" +
+            "<span class=\"visita-row-main\">" + formatDateHuman(v.fecha) + " · " + v.centro + "</span>" +
+            "<span class=\"chip-estado " + v.estado + "\">" + estadoLabel + "</span>" +
+          "</div>" +
+          "<div class=\"visita-row-secondary\">Del. " + v.delegado + " · Resp. Audio " + v.respAudio + "</div>" +
+          "<div class=\"visita-actions\">" +
+            "<button class=\"btn-chip btn-ir-informe\" data-centro=\"" + v.centro +
+            "\" data-fecha=\"" + v.fecha + "\" data-idx=\"" + idx + "\">Informe</button>" +
+          "</div>";
         visitasList.appendChild(row);
       });
     }
 
-    /* MODALES GENÉRICOS */
+    // Modales genéricos
     function abrirModal(id){ document.getElementById(id).style.display = "flex"; }
     function cerrarModal(id){ document.getElementById(id).style.display = "none"; }
-    $$(".modal-close").forEach(el=>{
-      el.addEventListener("click", ()=> cerrarModal(el.dataset.close));
-    });
-    $$(".modal-backdrop").forEach(bg=>{
-      bg.addEventListener("click", e=>{
-        if (e.target===bg) bg.style.display="none";
+
+    function initModalesGenericos() {
+      $$(".modal-close").forEach(el=>{
+        el.addEventListener("click", ()=> cerrarModal(el.dataset.close));
       });
-    });
-
-    /* INFORME / KPIs CENTRO */
-    let centroChartsCreated = false;
-    const centroCharts = {};
-    let centroMetricsActual = null;
-    let centroActual = null;
-
-    const dashboardAcum = {
-      procesos: 0,
-      convPrueba: 0,
-      convVenta: 0,
-      hit: 0,
-      formaciones: 0,
-      ayuda: 0,
-      aar: 0,
-      primeros: 0,
-      areas: 0,
-      n: 0
-    };
-
-    function actualizarDashboardDesdeAcum() {
-      if (!dashboardAcum.n) return;
-      if (!globalCharts.radarGeneral) return;
-      const n = dashboardAcum.n;
-      const avgProc = Math.round(dashboardAcum.procesos / n);
-      const avgPrue = Math.round(dashboardAcum.convPrueba / n);
-      const avgVent = Math.round(dashboardAcum.convVenta / n);
-      const avgHit  = Math.round(dashboardAcum.hit / n);
-      const avgForm = Math.round(dashboardAcum.formaciones / n);
-      const ayudaPct = Math.round(100 * dashboardAcum.ayuda / n);
-      const aarPct   = Math.round(100 * dashboardAcum.aar / n);
-      const primerosPct = Math.round(100 * dashboardAcum.primeros / n);
-
-      $("#kpiProcesos").textContent   = avgProc + "%";
-      $("#kpiConvPrueba").textContent = avgPrue + "%";
-      $("#kpiConvVenta").textContent  = avgVent + "%";
-      $("#kpiHIT").textContent        = avgHit + "%";
-      $("#kpiFormaciones").textContent = avgForm + "%";
-      $("#kpiAyuda").textContent      = ayudaPct === 0 ? "No" : `Sí ${ayudaPct}%`;
-      $("#kpiAar").textContent        = aarPct === 0 ? "No" : `Sí ${aarPct}%`;
-      $("#kpiPrimeros").textContent   = primerosPct === 0 ? "No" : `Sí ${primerosPct}%`;
-
-      globalCharts.radarGeneral.data.datasets[0].data = [
-        avgProc, avgPrue, avgVent, avgHit, avgForm, primerosPct
-      ];
-      globalCharts.radarGeneral.update();
+      $$(".modal-backdrop").forEach(bg=>{
+        bg.addEventListener("click", e=>{
+          if (e.target===bg) bg.style.display="none";
+        });
+      });
     }
 
+    // Formaciones / flags
     function getChecklistFlags() {
-      const q = sel => document.querySelector(`input[data-kpi="${sel}"]`);
-      const isChecked = sel => !!(q(sel) && q(sel).checked);
+      const isChecked = sel => {
+        const el = document.querySelector('input[data-kpi="' + sel + '"]');
+        return !!(el && el.checked);
+      };
       const audioKeys = [
         "audio_test","audio_screening","audio_manteleta",
         "audio_escaparate","audio_salud","audio_renove"
       ];
-      const audioCount = audioKeys.reduce((acc,k)=> acc + (isChecked(k)?1:0), 0);
+      let audioCount = 0;
+      audioKeys.forEach(k => { if (isChecked(k)) audioCount++; });
       const elemAudio = audioCount >= 3;
       const aar   = centroActual ? (centroActual.aar === "Sí") : false;
       const ayuda = isChecked("telecare") || isChecked("pia") || isChecked("telehear");
@@ -2332,175 +2331,115 @@
       };
     }
 
-    function calcularFormacionesYScreening() {
+    function calcularFormaciones() {
       const formKeys = ["wsa","starkey","neuroventas","telecare","pia","telehear","rt"];
       const totalForm = formKeys.length;
-      const checkedForm = formKeys.reduce((acc,k)=>{
-        const el = document.querySelector(`input[data-kpi="${k}"]`);
-        return acc + (el && el.checked ? 1 : 0);
-      },0);
+      let checkedForm = 0;
+      formKeys.forEach(k => {
+        const el = document.querySelector('input[data-kpi="' + k + '"]');
+        if (el && el.checked) checkedForm++;
+      });
       const formaciones = totalForm ? Math.round(100 * checkedForm / totalForm) : 0;
-      const screening = document.querySelector('input[data-kpi="audio_screening"]')?.checked ? 100 : 0;
-      return { formaciones, screening };
+      return { formaciones };
     }
 
-    /* 80 CRITERIOS: estructura global */
-    const criteriosGlobal = new Map(); // nombre -> {nombre, suma, total}
-    let criteriosDemoActivo = false;
-    let ultimoChecklistCentro = null;
-    const globalCharts = {};
-
+    // Normalización porcentajes
     function normalizarPorcentaje(v) {
       if (v == null || v === "") return 0;
-      let num = v;
-      if (typeof num !== "number") {
-        num = parseFloat(String(num).replace(",", "."));
-        if (isNaN(num)) return 0;
+      let s = String(v).replace(",", ".");
+      let num = parseFloat(s);
+      if (isNaN(num)) return 0;
+      if (num <= 1) num = num * 100;
+      num = Math.round(num);
+      if (num < 0) num = 0;
+      if (num > 100) num = 100;
+      return num;
+    }
+
+    // Checklist: parse según CORNER / EXCLUSIVO
+    function parseChecklist(workbook, tipo) {
+      let sheetName = null;
+      workbook.SheetNames.forEach(n => {
+        if (!sheetName && /PROCESOS/i.test(n)) sheetName = n;
+      });
+      if (!sheetName) sheetName = workbook.SheetNames[0];
+      const sheet = workbook.Sheets[sheetName];
+      const rows = XLSX.utils.sheet_to_json(sheet, {header:1});
+
+      let rStart, rEnd, colCrit=1, colRes=5, filaProc, colProc=5, filaHit, colHit=5, filaPrueba, colPrueba, filaVenta, colVenta;
+      if (tipo === "EXCLUSIVO") {
+        rStart = 7;  rEnd = 101; // B8–B102
+        filaProc = 103; // F104
+        filaHit  = 64;  // F65
+        filaPrueba = 125; // I126
+        filaVenta  = 126; // I127
+        colPrueba = 8; colVenta = 8;
+      } else {
+        // CORNER
+        rStart = 6;  rEnd = 87; // B7–B88
+        filaProc = 89; // F90
+        filaHit  = 62; // F63
+        filaPrueba = 91; // B92
+        filaVenta  = 92; // B93
+        colPrueba = 1; colVenta = 1;
       }
-      if (num <= 1) return Math.round(num * 100);
-      return Math.round(num);
-    }
-    const clampPct = v => Math.max(0, Math.min(100, v));
 
-    function getCellNumber(sheet, addr) {
-      const cell = sheet[addr];
-      if (!cell) return 0;
-      return clampPct(normalizarPorcentaje(cell.v));
-    }
-    function getBooleanCell(sheet, addr) {
-      const cell = sheet[addr];
-      if (!cell) return false;
-      const v = (""+cell.v).toLowerCase();
-      return v === "1" || v === "si" || v === "sí" || v === "x";
-    }
-
-    function parseChecklistCorner(sheet) {
       const criterios = [];
-      let totalCriterios = 0;
-      let totalAplica = 0;
-
-      for (let r = 7; r <= 88; r++) {
-        const critCell = sheet["B"+r];
-        if (!critCell) continue;
-        const nombre = String(critCell.v || "").trim();
+      for (let r = rStart; r <= rEnd && r < rows.length; r++) {
+        const row = rows[r] || [];
+        const nombre = row[colCrit];
         if (!nombre) continue;
-        const valCell = sheet["F"+r];
-        const rawVal  = valCell ? valCell.v : 0;
-        const aplica  = Number(rawVal) === 1;
-        criterios.push({nombre, aplica});
-        totalCriterios++;
-        if (aplica) totalAplica++;
+        const valor = row[colRes];
+        const aplica = Number(valor) === 1 ? 1 : 0;
+        criterios.push({ nombre: String(nombre).trim(), aplica });
       }
 
-      const procesosXls  = getCellNumber(sheet,"F90");
-      const convPrueba   = getCellNumber(sheet,"B92");
-      const convVenta    = getCellNumber(sheet,"B93");
-      const hit          = getBooleanCell(sheet,"F63");
+      function getCell(rowIdx, colIdx) {
+        const row = rows[rowIdx] || [];
+        return row[colIdx];
+      }
 
-      const procesosCalc = totalCriterios ? Math.round(100 * totalAplica / totalCriterios) : 0;
-      const procesosFinal = procesosXls || procesosCalc;
-      const areasMejora = totalCriterios - totalAplica;
+      const procesosPct   = normalizarPorcentaje(getCell(filaProc, colProc));
+      const convPruebaPct = normalizarPorcentaje(getCell(filaPrueba, colPrueba));
+      const convVentaPct  = normalizarPorcentaje(getCell(filaVenta, colVenta));
+      const hit           = Number(getCell(filaHit, colHit)) === 1;
+      const areasMejora   = criterios.filter(c => !c.aplica).length;
 
-      return {
-        tipo: "CORNER",
-        procesosPct: procesosFinal,
-        convPruebaPct: convPrueba,
-        convVentaPct: convVenta,
-        hit,
-        criterios,
-        areasMejora
-      };
+      return { tipo, procesosPct, convPruebaPct, convVentaPct, hit, criterios, areasMejora };
     }
 
-    function parseChecklistExclusivo(sheet) {
-      const criterios = [];
-      let totalCriterios = 0;
-      let totalAplica = 0;
-
-      for (let r = 8; r <= 102; r++) {
-        const critCell = sheet["B"+r];
-        if (!critCell) continue;
-        const nombre = String(critCell.v || "").trim();
-        if (!nombre) continue;
-        const valCell = sheet["F"+r];
-        const rawVal  = valCell ? valCell.v : 0;
-        const aplica  = Number(rawVal) === 1;
-        criterios.push({nombre, aplica});
-        totalCriterios++;
-        if (aplica) totalAplica++;
-      }
-
-      const procesosXls  = getCellNumber(sheet,"F104");
-      const convPrueba   = getCellNumber(sheet,"I126");
-      const convVenta    = getCellNumber(sheet,"I127");
-      const hit          = getBooleanCell(sheet,"F65");
-
-      const procesosCalc = totalCriterios ? Math.round(100 * totalAplica / totalCriterios) : 0;
-      const procesosFinal = procesosXls || procesosCalc;
-      const areasMejora = totalCriterios - totalAplica;
-
-      return {
-        tipo: "EXCLUSIVO",
-        procesosPct: procesosFinal,
-        convPruebaPct: convPrueba,
-        convVentaPct: convVenta,
-        hit,
-        criterios,
-        areasMejora
-      };
-    }
-
-    function seedCriteriosDemo() {
-      criteriosDemoActivo = true;
-      criteriosGlobal.clear();
-      const total = 80;
-      for (let i = 1; i <= total; i++) {
-        const nombre = `Criterio ${i}`;
-        const pct = 60 + Math.round(Math.random()*40);
-        criteriosGlobal.set(nombre, { nombre, suma: pct, total: 100 });
-      }
-      actualizarGraficoCriterios();
-    }
-
-    function integrarChecklistEnMetricas(centroNombre, parsed) {
-      if (criteriosDemoActivo) {
-        criteriosGlobal.clear();
-        criteriosDemoActivo = false;
-      }
+    function integrarChecklistEnCriteriosGlobal(parsed) {
+      if (!parsed || !parsed.criterios) return;
+      const msg = $("#criteriosEmptyMsg");
+      if (msg) msg.style.display = "none";
 
       parsed.criterios.forEach(c => {
         const key = c.nombre || "Criterio";
-        let obj = criteriosGlobal.get(key);
-        if (!obj) {
-          obj = { nombre:key, suma:0, total:0 };
-          criteriosGlobal.set(key, obj);
+        if (!criteriosGlobal[key]) {
+          criteriosGlobal[key] = { suma: 0, total: 0 };
         }
-        obj.suma  += c.aplica ? 1 : 0;
-        obj.total += 1;
+        criteriosGlobal[key].suma  += c.aplica ? 1 : 0;
+        criteriosGlobal[key].total += 1;
       });
       actualizarGraficoCriterios();
     }
 
     function actualizarGraficoCriterios() {
-      const lista = Array.from(criteriosGlobal.values()).map(o => ({
-        nombre: o.nombre,
-        pct: o.total ? Math.round(100 * o.suma / o.total) : 0
-      }));
+      const lista = Object.keys(criteriosGlobal).map(nombre => {
+        const o = criteriosGlobal[nombre];
+        const pct = o.total ? Math.round(100 * o.suma / o.total) : 0;
+        return { nombre, pct };
+      });
       if (!lista.length) return;
 
       lista.sort((a,b)=>b.pct - a.pct);
-      const maxCriterios = 120;
-      const top = lista.slice(0, maxCriterios);
+      const top = lista.slice(0, 80);
       const labels = top.map(i => i.nombre);
       const data   = top.map(i => i.pct);
       const colors = top.map(i =>
         i.pct >= 100 ? "#16a34a" :
-        i.pct >= 85  ? "#22c55e" :
-                       "#ef4444"
+        i.pct >= 85  ? "#22c55e" : "#ef4444"
       );
-
-      const msg = $("#criteriosEmptyMsg");
-      if (msg) msg.style.display = "none";
 
       const canvas = document.getElementById("chartCriteriosDetalle");
       if (canvas) {
@@ -2528,7 +2467,7 @@
               legend: { display:false },
               tooltip: {
                 callbacks: {
-                  label: ctx => `${ctx.parsed.x}%`
+                  label: ctx => ctx.parsed.x + "%"
                 }
               }
             },
@@ -2564,51 +2503,102 @@
     }
 
     function procesarChecklist(file, centroNombre) {
-      const nameLower = file.name.toLowerCase();
-      if (!nameLower.includes("checklist") && !nameLower.includes("checlist")) {
-        alert('El archivo debe tener la palabra "checklist" en el nombre.');
+      const fileName = file.name.toLowerCase();
+      if (!fileName.includes("checklist")) {
+        alert("El archivo no parece un checklist (no contiene 'checklist' en el nombre).");
         return;
       }
-      const tipoSelEl = document.querySelector('input[name="tipoChecklist"]:checked');
-      if (!tipoSelEl) {
-        alert("Selecciona si el checklist es Corner o Exclusivo.");
+      const tipoInput = document.querySelector('input[name="tipoChecklist"]:checked');
+      const tipo = tipoInput ? tipoInput.value : null;
+      if (!tipo) {
+        alert("Selecciona si el centro es Corner o Exclusivo antes de adjuntar.");
         return;
       }
-      const tipoSel = tipoSelEl.value; // "corner" o "exclusivo"
 
       const reader = new FileReader();
       reader.onload = evt => {
         try {
           const data = new Uint8Array(evt.target.result);
           const workbook = XLSX.read(data, { type: "array" });
-          const sheetName = workbook.SheetNames[0];
-          const sheet = workbook.Sheets[sheetName];
-
-          let parsed;
-          if (tipoSel === "corner") parsed = parseChecklistCorner(sheet);
-          else parsed = parseChecklistExclusivo(sheet);
-
+          const parsed = parseChecklist(workbook, tipo);
           ultimoChecklistCentro = { centro: centroNombre, data: parsed };
-          integrarChecklistEnMetricas(centroNombre, parsed);
 
-          $("#kpiCentroProcesos").textContent = parsed.procesosPct + "%";
-          $("#kpiCentroPrueba").textContent   = parsed.convPruebaPct + "%";
-          $("#kpiCentroVenta").textContent    = parsed.convVentaPct + "%";
-          $("#kpiCentroHit").textContent      = parsed.hit ? "Sí" : "No";
+          // Actualizar KPIs centro
+          actualizarCentroConMetrics(parsed);
 
-          actualizarChartsCentro();
+          // Alimentar criterios globales
+          integrarChecklistEnCriteriosGlobal(parsed);
+
+          alert("Checklist leído correctamente (demo).");
         } catch (err) {
           console.error(err);
-          alert("No se ha podido leer el checklist. Revisa que sea el formato original CORNER / EXCLUSIVO.");
+          alert("No se ha podido leer el checklist. Revisa que tenga el formato esperado.");
         }
       };
       reader.readAsArrayBuffer(file);
     }
 
-    /* CHARTS CENTRO */
+    function actualizarCentroConMetrics(parsed) {
+      if (!parsed) return;
+      const { formaciones } = calcularFormaciones();
+      const flags = getChecklistFlags();
+      const procesos   = parsed.procesosPct || 0;
+      const convPrueba = parsed.convPruebaPct || 0;
+      const convVenta  = parsed.convVentaPct || 0;
+      const hitVal     = parsed.hit ? 90 : 60;
+      const primerosPct = flags.primeros ? 100 : 0;
+      const areasMejora = parsed.areasMejora || 0;
+
+      $("#kpiCentroProcesos").textContent = procesos + "%";
+      $("#kpiCentroPrueba").textContent   = convPrueba + "%";
+      $("#kpiCentroVenta").textContent    = convVenta + "%";
+      $("#kpiCentroHit").textContent      = hitVal + "%";
+
+      if (!centroChartsCreated) crearChartsCentro();
+
+      // Radar
+      centroCharts.radar.data.datasets[0].data = [
+        formaciones,
+        primerosPct,
+        procesos,
+        convPrueba,
+        convVenta
+      ];
+      centroCharts.radar.update();
+
+      // Barras SI/NO
+      const valores = [
+        flags.aar, flags.hit, flags.primeros, flags.infinity, flags.seguros,
+        flags.tchin, flags.rt, flags.elemAudio, flags.mgm
+      ].map(b => b ? 1 : 0);
+      centroCharts.barras.data.datasets[0].data = valores;
+      centroCharts.barras.update();
+
+      const siCount = valores.filter(v => v === 1).length;
+      const noCount = valores.length - siCount;
+      centroCharts.donut.data.datasets[0].data = [siCount, noCount];
+      centroCharts.donut.update();
+
+      centroCharts.procResumen.data.datasets[0].data = [procesos, 100-procesos];
+      centroCharts.procResumen.update();
+
+      centroCharts.areasResumen.data.datasets[0].data = [areasMejora, Math.max(0, 10-areasMejora)];
+      centroCharts.areasResumen.update();
+
+      centroCharts.convResumen.data.datasets[0].data = [convPrueba, convVenta];
+      centroCharts.convResumen.update();
+
+      centroMetricsActual = {
+        procesos, convPrueba, convVenta, hit: hitVal,
+        formaciones, primeros: primerosPct, areasMejora
+      };
+    }
+
+    // Charts centro (demo)
     function crearChartsCentro() {
       if (centroChartsCreated) return;
       centroChartsCreated = true;
+
       const radarCtx = document.getElementById("chartCentroRadar").getContext("2d");
       centroCharts.radar = new Chart(radarCtx, {
         type: "radar",
@@ -2616,7 +2606,7 @@
           labels: ["Formaciones","1os auxilios","Procesos","Conv. prueba","Conv. cierre"],
           datasets: [{
             label: "Nivel (%)",
-            data: [80,40,90,82,78],
+            data: [60,40,80,75,70],
             backgroundColor: "rgba(56,189,248,0.2)",
             borderColor: "#38bdf8",
             borderWidth: 2,
@@ -2644,10 +2634,7 @@
           datasets: [{
             label: "1 = Sí, 0 = No",
             data: [1,1,0,1,0,0,1,1,0],
-            backgroundColor: [
-              "#22c55e","#3b82f6","#f97316","#ef4444",
-              "#22c55e","#3b82f6","#f97316","#ef4444","#22c55e"
-            ],
+            backgroundColor: "#38bdf8",
             borderWidth: 1
           }]
         },
@@ -2658,7 +2645,7 @@
           scales:{
             x:{ ticks:{ color:getComputedStyle(document.body).getPropertyValue("--text-muted"), font:{size:10} },
                 grid:{ display:false } },
-            y:{ ticks:{ color:getComputedStyle(document.body).getPropertyValue("--text-muted"), font:{size:10}, stepSize:1, max:1, min:0 },
+            y:{ ticks:{ color:getComputedStyle(document.body).getPropertyValue("--text-muted"), stepSize:1, max:1, min:0 },
                 grid:{ color:"rgba(30,64,175,0.3)" } }
           }
         }
@@ -2692,26 +2679,27 @@
             {
               type:"line",
               label:"Procesos %",
-              data:[78,80,82,85,87,88,89,90,91,92,92,93],
-              borderWidth:2,
-              tension:.35,
+              data:[70,72,74,76,78,80,82,83,84,85,86,87],
               borderColor:"#3b82f6",
+              backgroundColor:"rgba(56,189,248,0.2)",
+              tension:.35,
+              borderWidth:2,
               pointRadius:2,
               yAxisID:"y"
             },
             {
               type:"bar",
               label:"Áreas de mejora",
-              data:[6,6,5,5,4,4,3,3,3,2,2,2],
+              data:[8,8,7,7,6,6,5,5,4,4,3,3],
               backgroundColor:"rgba(239,68,68,0.5)",
               yAxisID:"y"
             }
           ]
         },
         options:{
+          plugins:{ legend:{ labels:{ color:getComputedStyle(document.body).getPropertyValue("--text-main"), font:{size:10} } } },
           responsive:true,
           maintainAspectRatio:false,
-          plugins:{ legend:{ labels:{ color:getComputedStyle(document.body).getPropertyValue("--text-main"), font:{size:10} } } },
           scales:{
             x:{ ticks:{ color:getComputedStyle(document.body).getPropertyValue("--text-muted"), font:{size:10} },
                 grid:{ color:"rgba(31,41,55,0.3)" } },
@@ -2727,15 +2715,15 @@
         data:{
           labels:["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
           datasets:[{
-            label:"HIT",
-            data:[70,72,74,76,78,80,82,84,85,86,86,87],
+            label:"HIT %",
+            data:[60,62,64,66,68,70,72,74,76,78,80,82],
             backgroundColor:"#f97316"
           }]
         },
         options:{
+          plugins:{ legend:{ display:false } },
           responsive:true,
           maintainAspectRatio:false,
-          plugins:{ legend:{ display:false } },
           scales:{
             x:{ ticks:{ color:getComputedStyle(document.body).getPropertyValue("--text-muted"), font:{size:10} },
                 grid:{ display:false } },
@@ -2752,14 +2740,14 @@
           labels:["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
           datasets:[{
             label:"Áreas de mejora",
-            data:[6,6,5,5,4,4,3,3,3,2,2,2],
+            data:[8,8,7,7,6,6,5,5,4,4,3,3],
             backgroundColor:"#ef4444"
           }]
         },
         options:{
+          plugins:{ legend:{ display:false } },
           responsive:true,
           maintainAspectRatio:false,
-          plugins:{ legend:{ display:false } },
           scales:{
             x:{ ticks:{ color:getComputedStyle(document.body).getPropertyValue("--text-muted"), font:{size:10} },
                 grid:{ display:false } },
@@ -2782,9 +2770,9 @@
         },
         options:{
           indexAxis:"y",
+          plugins:{ legend:{ display:false } },
           responsive:true,
           maintainAspectRatio:false,
-          plugins:{ legend:{ display:false } },
           scales:{
             x:{ ticks:{ color:getComputedStyle(document.body).getPropertyValue("--text-muted"), font:{size:10} },
                 grid:{ color:"rgba(31,41,55,0.3)" } },
@@ -2800,7 +2788,7 @@
         data:{
           labels:["Aplicados","Pendiente"],
           datasets:[{
-            data:[90,10],
+            data:[80,20],
             backgroundColor:["#22c55e","#6b7280"],
             borderWidth:1
           }]
@@ -2831,7 +2819,7 @@
             x:{ ticks:{ color:getComputedStyle(document.body).getPropertyValue("--text-muted"), font:{size:10} },
                 grid:{ display:false } },
             y:{ ticks:{ color:getComputedStyle(document.body).getPropertyValue("--text-muted"), font:{size:10} },
-                grid:{ color:"rgba(31,41,55,0.3)" } }
+                grid:{ color:"rgba(31,41,55,0.3)" }, max:100, min:0 }
           }
         }
       });
@@ -2842,7 +2830,7 @@
         data:{
           labels:["Prueba","Venta"],
           datasets:[{
-            data:[82,78],
+            data:[78,72],
             backgroundColor:["#38bdf8","#22c55e"]
           }]
         },
@@ -2860,169 +2848,126 @@
       });
     }
 
-    function actualizarChartsCentro() {
-      if (!centroChartsCreated) return;
-      const { formaciones, screening } = calcularFormacionesYScreening();
-      let procesos   = 90;
-      let convPrueba = 82;
-      let convVenta  = 78;
-      let hitVal     = 80;
-      let areasMejora = 4;
-
-      const parsed = (ultimoChecklistCentro && centroActual && ultimoChecklistCentro.centro === centroActual.centro)
-        ? ultimoChecklistCentro.data
-        : null;
-
-      if (parsed) {
-        procesos    = parsed.procesosPct;
-        convPrueba  = parsed.convPruebaPct;
-        convVenta   = parsed.convVentaPct;
-        areasMejora = parsed.areasMejora;
-        hitVal      = parsed.hit ? 90 : 60;
-      }
-
-      const flags = getChecklistFlags();
-      const primerosPct = flags.primeros ? 100 : 0;
-
-      $("#kpiCentroProcesos").textContent = procesos + "%";
-      $("#kpiCentroPrueba").textContent   = convPrueba + "%";
-      $("#kpiCentroVenta").textContent    = convVenta + "%";
-      $("#kpiCentroHit").textContent      = hitVal + "%";
-
-      centroCharts.radar.data.datasets[0].data = [
-        formaciones,
-        primerosPct,
-        procesos,
-        convPrueba,
-        convVenta
-      ];
-      centroCharts.radar.update();
-
-      const valores = [
-        flags.aar, flags.hit, flags.primeros, flags.infinity, flags.seguros,
-        flags.tchin, flags.rt, flags.elemAudio, flags.mgm
-      ].map(b => b ? 1 : 0);
-      centroCharts.barras.data.datasets[0].data = valores;
-      centroCharts.barras.update();
-
-      const siCount = valores.filter(v => v === 1).length;
-      const noCount = valores.length - siCount;
-      centroCharts.donut.data.datasets[0].data = [siCount, noCount];
-      centroCharts.donut.update();
-
-      centroCharts.procResumen.data.datasets[0].data = [procesos, 100-procesos];
-      centroCharts.procResumen.update();
-
-      centroCharts.areasResumen.data.datasets[0].data = [areasMejora, Math.max(0, 10-areasMejora)];
-      centroCharts.areasResumen.update();
-
-      centroCharts.convResumen.data.datasets[0].data = [convPrueba, convVenta];
-      centroCharts.convResumen.update();
-
-      centroMetricsActual = { procesos, convPrueba, convVenta, hit: hitVal, formaciones, screening, primeros: primerosPct, areasMejora };
-    }
-
-    document.addEventListener("change", e => {
-      if (e.target.matches("input[data-kpi]")) {
-        crearChartsCentro();
-        actualizarChartsCentro();
-      }
-    });
-
+    // Ir a informe
     function irAInforme(centroNombre, fechaIso) {
       const c = centros.find(x => x.centro === centroNombre) || centros[0];
       if (!c) { alert("No hay centros cargados todavía."); return; }
       centroActual = c;
       $$(".nav-item").forEach(i => i.classList.toggle("active", i.dataset.page === "informe"));
-      pages.forEach(p => p.classList.toggle("active", p.dataset.page === "informe"));
+      $$(".page").forEach(p => p.classList.toggle("active", p.dataset.page === "informe"));
+
       $("#infCentro").value    = c.centro;
       $("#infProvincia").value = c.provincia;
       $("#infDelegado").value  = c.delegado;
       $("#infTipo").value      = tipoCentro(c.centro);
       $("#infRespAudio").value = "Ariannys Rojas / Sonia Guasque";
-      $("#infFecha").value     = fechaIso ? formatDateHuman(fechaIso) : formatDateHuman(new Date().toISOString().slice(0,10));
-      crearChartsCentro();
-      actualizarChartsCentro();
+      const hoyIso = formatDateISO(new Date());
+      $("#infFecha").value     = fechaIso ? formatDateHuman(fechaIso) : formatDateHuman(hoyIso);
+
+      crearChartsCentro(); // demo por defecto
     }
 
-    document.addEventListener("click", e => {
-      if (e.target.matches(".btn-ir-informe")) {
-        const idx = parseInt(e.target.dataset.idx, 10);
-        visitaActual = visitas[idx];
-        if (visitaActual) {
-          visitaActual.estado = "enproceso";
-          renderVisitas();
-          irAInforme(visitaActual.centro, visitaActual.fecha);
+    function initInformeEventos() {
+      document.addEventListener("click", e => {
+        if (e.target.matches(".btn-ir-informe")) {
+          const idx = parseInt(e.target.dataset.idx, 10);
+          visitaActual = visitas[idx];
+          if (visitaActual) {
+            visitaActual.estado = "enproceso";
+            renderVisitas();
+            irAInforme(visitaActual.centro, visitaActual.fecha);
+          }
         }
-      }
-      if (e.target.matches(".btn-informe-centro")) {
-        const centroNombre = e.target.dataset.centro;
-        visitaActual = null;
-        irAInforme(centroNombre, formatDateISO(new Date()));
-      }
-    });
-
-    $("#btnAdjuntarChecklist").addEventListener("click", ()=> $("#inputChecklist").click());
-    $("#inputChecklist").addEventListener("change", e => {
-      const file = e.target.files[0];
-      if (file) {
-        $("#nombreChecklist").textContent = file.name;
-        const centroNombre = centroActual ? centroActual.centro : "Centro sin asignar";
-        procesarChecklist(file, centroNombre);
-      } else {
-        $("#nombreChecklist").textContent = "";
-      }
-    });
-
-    $$(".imagen-preview").forEach(div => {
-      div.addEventListener("click", () => {
-        const target = div.dataset.target;
-        const input = document.querySelector(`input[data-input-img="${target}"]`);
-        if (input) input.click();
+        if (e.target.matches(".btn-informe-centro")) {
+          const centroNombre = e.target.dataset.centro;
+          visitaActual = null;
+          irAInforme(centroNombre, formatDateISO(new Date()));
+        }
       });
-    });
-    $$('input[data-input-img]').forEach(input => {
-      input.addEventListener("change", e => {
+
+      $("#btnAdjuntarChecklist").addEventListener("click", ()=> $("#inputChecklist").click());
+      $("#inputChecklist").addEventListener("change", e => {
         const file = e.target.files[0];
-        const target = e.target.dataset.inputImg;
-        const cont = document.querySelector(`.imagen-preview[data-target="${target}"]`);
-        if (file && cont) {
-          const reader = new FileReader();
-          reader.onload = evt => {
-            cont.innerHTML = `<img src="${evt.target.result}" alt="Imagen ${target}">`;
-          };
-          reader.readAsDataURL(file);
+        if (file) {
+          $("#nombreChecklist").textContent = file.name;
+          const centroNombre = centroActual ? centroActual.centro : "Centro sin asignar";
+          procesarChecklist(file, centroNombre);
+        } else {
+          $("#nombreChecklist").textContent = "";
         }
       });
-    });
 
-    $("#btnGuardarInforme").addEventListener("click", () => {
-      actualizarChartsCentro();
-      if (centroMetricsActual && centroActual) {
-        const flags = getChecklistFlags();
-        dashboardAcum.procesos   += centroMetricsActual.procesos;
-        dashboardAcum.convPrueba += centroMetricsActual.convPrueba;
-        dashboardAcum.convVenta  += centroMetricsActual.convVenta;
-        dashboardAcum.hit        += centroMetricsActual.hit;
-        dashboardAcum.formaciones+= centroMetricsActual.formaciones;
-        dashboardAcum.ayuda      += flags.ayuda ? 1 : 0;
-        dashboardAcum.aar        += flags.aar ? 1 : 0;
-        dashboardAcum.primeros   += flags.primeros ? 1 : 0;
-        dashboardAcum.areas      += centroMetricsActual.areasMejora || 0;
-        dashboardAcum.n += 1;
-        actualizarDashboardDesdeAcum();
-        informesPorCentro[centroActual.centro] = (informesPorCentro[centroActual.centro] || 0) + 1;
-        renderTablaCentros();
-      }
-      if (visitaActual) {
-        visitaActual.estado = "finalizada";
-        renderVisitas();
-        visitaActual = null;
-      }
-      alert("Informe guardado (demo). Se han actualizado los KPIs del dashboard.");
-    });
+      // Imágenes
+      $$(".imagen-preview").forEach(div => {
+        div.addEventListener("click", () => {
+          const target = div.dataset.target;
+          const input = document.querySelector('input[data-input-img="' + target + '"]');
+          if (input) input.click();
+        });
+      });
+      $$('input[data-input-img]').forEach(input => {
+        input.addEventListener("change", e => {
+          const file = e.target.files[0];
+          const target = e.target.dataset.inputImg;
+          const cont = document.querySelector('.imagen-preview[data-target="' + target + '"]');
+          if (file && cont) {
+            const reader = new FileReader();
+            reader.onload = evt => {
+              cont.innerHTML = "<img src=\"" + evt.target.result + "\" alt=\"Imagen " + target + "\">";
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      });
 
-    /* CHARTS DASHBOARD GLOBAL */
+      // Guardar informe -> actualiza dashboard
+      $("#btnGuardarInforme").addEventListener("click", () => {
+        if (centroMetricsActual && centroActual) {
+          const flags = getChecklistFlags();
+          const { formaciones } = calcularFormaciones();
+
+          dashboardAcum.procesos   += centroMetricsActual.procesos;
+          dashboardAcum.convPrueba += centroMetricsActual.convPrueba;
+          dashboardAcum.convVenta  += centroMetricsActual.convVenta;
+          dashboardAcum.hit        += centroMetricsActual.hit;
+          dashboardAcum.formaciones+= formaciones;
+          dashboardAcum.ayuda      += flags.ayuda ? 1 : 0;
+          dashboardAcum.aar        += flags.aar ? 1 : 0;
+          dashboardAcum.primeros   += flags.primeros ? 1 : 0;
+          dashboardAcum.n += 1;
+
+          actualizarDashboardDesdeAcum();
+          informesPorCentro[centroActual.centro] = (informesPorCentro[centroActual.centro] || 0) + 1;
+          renderTablaCentros();
+        }
+        if (visitaActual) {
+          visitaActual.estado = "finalizada";
+          renderVisitas();
+          visitaActual = null;
+        }
+        alert("Informe guardado (demo). KPIs del dashboard actualizados.");
+      });
+
+      // Checkboxes -> refrescar radar demo si aún no hay checklist
+      document.addEventListener("change", e => {
+        if (!e.target.matches("input[data-kpi]")) return;
+        if (!centroChartsCreated) crearChartsCentro();
+        if (!ultimoChecklistCentro || !centroActual || ultimoChecklistCentro.centro !== centroActual.centro) {
+          // Solo usando formaciones / primeros aux si no hay checklist real
+          const { formaciones } = calcularFormaciones();
+          const flags = getChecklistFlags();
+          const primerosPct = flags.primeros ? 100 : 0;
+          centroCharts.radar.data.datasets[0].data = [
+            formaciones,
+            primerosPct,
+            80, 78, 74
+          ];
+          centroCharts.radar.update();
+        }
+      });
+    }
+
+    // Dashboard charts demo
     function initDashboardCharts() {
       const radarCtx = document.getElementById("chartRadarGeneral").getContext("2d");
       globalCharts.radarGeneral = new Chart(radarCtx, {
@@ -3183,7 +3128,36 @@
       });
     }
 
-    /* DEMO CENTROS */
+    function actualizarDashboardDesdeAcum() {
+      if (!dashboardAcum.n) return;
+      const n = dashboardAcum.n;
+      const avgProc = Math.round(dashboardAcum.procesos / n);
+      const avgPrue = Math.round(dashboardAcum.convPrueba / n);
+      const avgVent = Math.round(dashboardAcum.convVenta / n);
+      const avgHit  = Math.round(dashboardAcum.hit / n);
+      const avgForm = Math.round(dashboardAcum.formaciones / n);
+      const ayudaPct = Math.round(100 * dashboardAcum.ayuda / n);
+      const aarPct   = Math.round(100 * dashboardAcum.aar / n);
+      const primerosPct = Math.round(100 * dashboardAcum.primeros / n);
+
+      $("#kpiProcesos").textContent   = avgProc + "%";
+      $("#kpiConvPrueba").textContent = avgPrue + "%";
+      $("#kpiConvVenta").textContent  = avgVent + "%";
+      $("#kpiHIT").textContent        = avgHit + "%";
+      $("#kpiFormaciones").textContent = avgForm + "%";
+      $("#kpiAyuda").textContent      = ayudaPct === 0 ? "No" : ("Sí " + ayudaPct + "%");
+      $("#kpiAar").textContent        = aarPct === 0 ? "No" : ("Sí " + aarPct + "%");
+      $("#kpiPrimeros").textContent   = primerosPct === 0 ? "No" : ("Sí " + primerosPct + "%");
+
+      if (globalCharts.radarGeneral) {
+        globalCharts.radarGeneral.data.datasets[0].data = [
+          avgProc, avgPrue, avgVent, avgHit, avgForm, primerosPct
+        ];
+        globalCharts.radarGeneral.update();
+      }
+    }
+
+    // DEMO centros
     function cargarCentrosDemo() {
       const demo = [
         { codigo:"4ABB", propietario:"MAZA Oriol", centro:"PAMPLONA C. Exclusivo", provincia:"NAVARRA", delegado:"Sonia Godino" },
@@ -3203,10 +3177,17 @@
       renderDelegados();
     }
 
+    // INIT
     window.addEventListener("load", () => {
-      cargarCentrosDemo();
+      initNav();
+      initTheme();
+      initTopbar();
+      initModalesGenericos();
+      initExcelCentros();
+      initNuevoCentro();
       initCalendar();
-      seedCriteriosDemo();
+      initInformeEventos();
+      cargarCentrosDemo();
       initDashboardCharts();
       actualizarDashboardDesdeAcum();
     });
