@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Control Center Audio - Dashboard</title>
+  <title>Gestionar Audio - Dashboard General</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Fuente y estilos básicos -->
   <style>
@@ -51,10 +51,10 @@
 
     /* Layout principal */
     .sidebar {
-      width: 250px;
+      width: 260px;
       background: linear-gradient(180deg, var(--bg-sidebar), var(--bg-sidebar) 40%, var(--bg-sidebar));
       border-right: 1px solid var(--border-soft);
-      padding: 18px 18px 24px;
+      padding: 20px 18px 24px;
       display: flex;
       flex-direction: column;
       gap: 24px;
@@ -63,30 +63,66 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .logo-badge {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #facc15, #ef4444);
-      box-shadow: 0 0 15px rgba(239,68,68,.5);
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 16px;
+      background: radial-gradient(circle at 30% 20%, #0ea5e9, #ef4444);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 18px rgba(239,68,68,.55);
+      font-size: 1.4rem;
     }
 
     .logo-text {
       display: flex;
       flex-direction: column;
+      gap: 2px;
     }
 
     .logo-title {
-      font-weight: 700;
+      font-weight: 800;
       font-size: 1.05rem;
+      letter-spacing: .03em;
+    }
+
+    .logo-title span {
+      display: inline-block;
+    }
+
+    .logo-title-gestion {
+      color: #f97316;
+    }
+
+    .logo-title-ar {
+      color: #38bdf8;
+      margin-left: 2px;
     }
 
     .logo-subtitle {
       font-size: .7rem;
       color: var(--text-muted);
+    }
+
+    .module-badge {
+      margin-top: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .78rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,.85);
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,.5);
+    }
+
+    .module-badge-icon {
+      font-size: .9rem;
     }
 
     .sidebar-footer {
@@ -107,7 +143,7 @@
     .topbar {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
       justify-content: flex-end;
     }
 
@@ -122,10 +158,16 @@
       gap: 6px;
       background: #0f172a;
       color: var(--text-main);
+      transition: background .15s ease, transform .08s ease, box-shadow .15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0,0,0,.4);
     }
 
     .btn-cta {
-      background: linear-gradient(90deg, var(--accent), #f97373);
+      background: linear-gradient(90deg, #ef4444, #f97316);
       color: #111827;
       font-weight: 600;
       box-shadow: 0 10px 25px rgba(239,68,68,.35);
@@ -149,6 +191,7 @@
       justify-content: flex-end;
       gap: 10px;
       font-size: .8rem;
+      margin-top: 6px;
     }
 
     .select {
@@ -182,12 +225,94 @@
       color: var(--text-muted);
     }
 
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
+    /* KPIs en botones pequeños */
+    .kpi-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      margin-bottom: 2px;
     }
 
+    .kpi-pill {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: .78rem;
+      cursor: default;
+      border: 1px solid transparent;
+      box-shadow: 0 4px 10px rgba(15,23,42,.55);
+      background: rgba(15,23,42,.9);
+      color: #e5e7eb;
+    }
+
+    body.light-theme .kpi-pill {
+      box-shadow: 0 4px 10px rgba(15,23,42,.18);
+      background: #ffffff;
+      color: #111827;
+    }
+
+    .kpi-label {
+      opacity: .85;
+    }
+
+    .kpi-value {
+      font-weight: 700;
+      font-size: .82rem;
+    }
+
+    .kpi-pill.procesos {
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      border-color: rgba(37,99,235,.8);
+    }
+
+    .kpi-pill.hit {
+      background: linear-gradient(135deg, #0f172a, #ef4444);
+      border-color: rgba(239,68,68,.85);
+    }
+
+    .kpi-pill.pa {
+      background: linear-gradient(135deg, #0f172a, #0f766e);
+      border-color: rgba(15,118,110,.85);
+    }
+
+    .kpi-pill.conv-prueba {
+      background: linear-gradient(135deg, #0f172a, #eab308);
+      border-color: rgba(234,179,8,.85);
+    }
+
+    .kpi-pill.conv-venta {
+      background: linear-gradient(135deg, #0f172a, #a855f7);
+      border-color: rgba(168,85,247,.85);
+    }
+
+    .kpi-pill.formaciones {
+      background: linear-gradient(135deg, #0f172a, #22c55e);
+      border-color: rgba(34,197,94,.85);
+    }
+
+    body.light-theme .kpi-pill.procesos {
+      background: linear-gradient(135deg, #eff6ff, #bfdbfe);
+    }
+    body.light-theme .kpi-pill.hit {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+    }
+    body.light-theme .kpi-pill.pa {
+      background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+    }
+    body.light-theme .kpi-pill.conv-prueba {
+      background: linear-gradient(135deg, #fef9c3, #fde68a);
+    }
+    body.light-theme .kpi-pill.conv-venta {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    }
+    body.light-theme .kpi-pill.formaciones {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    }
+
+    /* Cards y grid de gráficos */
     .card {
       background: radial-gradient(circle at top left, var(--bg-card-soft), #020617 55%);
       border-radius: var(--radius-xl);
@@ -202,54 +327,6 @@
       box-shadow: 0 10px 25px rgba(15,23,42,.12);
     }
 
-    .card-header {
-      font-size: .8rem;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .kpi-main {
-      font-size: 1.4rem;
-      font-weight: 700;
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-    }
-
-    .kpi-tag {
-      font-size: .72rem;
-      border-radius: 999px;
-      padding: 3px 8px;
-      background: rgba(239,68,68,.12);
-      color: #fecaca;
-    }
-
-    body.light-theme .kpi-tag {
-      color: #b91c1c;
-    }
-
-    .kpi-tag.warn {
-      background: rgba(234,179,8,.12);
-      color: #facc15;
-    }
-
-    .kpi-secondary {
-      font-size: .76rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    /* Grid central: 4 gráficos */
-    .grid-main {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
-      gap: 16px;
-      align-items: stretch;
-    }
-
     .card h3 {
       font-size: .9rem;
       margin-bottom: 8px;
@@ -259,6 +336,14 @@
       font-size: .76rem;
       color: var(--text-muted);
       margin-bottom: 10px;
+    }
+
+    .grid-main {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 16px;
+      align-items: stretch;
+      margin-top: 8px;
     }
 
     .chart-container {
@@ -318,11 +403,18 @@
   <!-- SIDEBAR (FALDÓN IZQUIERDO) -->
   <aside class="sidebar">
     <div class="logo">
-      <div class="logo-badge"></div>
+      <div class="logo-icon">🎧</div>
       <div class="logo-text">
-        <span class="logo-title">Control Center Audio</span>
-        <span class="logo-subtitle">Dashboard de procesos y KPIs</span>
+        <div class="logo-title">
+          <span class="logo-title-gestion">Gestion</span><span class="logo-title-ar">ar Audio</span>
+        </div>
+        <span class="logo-subtitle">Dashboard general de procesos y KPIs</span>
       </div>
+    </div>
+
+    <div class="module-badge">
+      <span class="module-badge-icon">📊</span>
+      <span>Dashboard general</span>
     </div>
 
     <div class="sidebar-footer">
@@ -348,17 +440,22 @@
       </button>
     </div>
 
-    <!-- Filtros -->
+    <!-- Filtros (Centro + Delegado) -->
     <div class="filters-row">
-      <select class="select" id="selectPeriodo">
-        <option value="12">Periodo: Últimos 12 meses</option>
-        <option value="3">Últimos 3 meses</option>
-        <option value="1">Último mes</option>
+      <select class="select" id="selectCentro">
+        <option value="todos">Centro: Todos</option>
+        <option value="reina-mercedes">Madrid · Reina Mercedes</option>
+        <option value="tetuan">Madrid · Tetuán</option>
+        <option value="nervion">Sevilla · Nervión</option>
+        <option value="gran-via">Bilbao · Gran Vía</option>
       </select>
-      <select class="select" id="selectTipoCentro">
-        <option value="todos">Tipo centro: Todos</option>
-        <option value="propio">Centro propio</option>
-        <option value="franquicia">Franquicia</option>
+      <select class="select" id="selectDelegado">
+        <option value="todos">Delegado: Todos</option>
+        <option value="blanca">Blanca</option>
+        <option value="cecilia">Cecilia</option>
+        <option value="daniel">Daniel</option>
+        <option value="eneritz">Eneritz</option>
+        <option value="luis">Luis</option>
       </select>
     </div>
 
@@ -370,90 +467,37 @@
           Visión rápida de procesos, HIT, primeros auxilios, conversiones y formaciones
         </span>
       </div>
+
+      <!-- KPIs como botones sombreados horizontales -->
+      <section class="kpi-row">
+        <div class="kpi-pill procesos">
+          <span class="kpi-label">Procesos aplicados</span>
+          <span class="kpi-value" id="kpiProcesos">84%</span>
+        </div>
+        <div class="kpi-pill hit">
+          <span class="kpi-label">HIT global</span>
+          <span class="kpi-value" id="kpiHit">81%</span>
+        </div>
+        <div class="kpi-pill pa">
+          <span class="kpi-label">Primeros auxilios</span>
+          <span class="kpi-value" id="kpiPrimerosAuxilios">63%</span>
+        </div>
+        <div class="kpi-pill conv-prueba">
+          <span class="kpi-label">Conv. a prueba</span>
+          <span class="kpi-value" id="kpiConvPrueba">39%</span>
+        </div>
+        <div class="kpi-pill conv-venta">
+          <span class="kpi-label">Conv. a venta</span>
+          <span class="kpi-value" id="kpiConvVenta">27%</span>
+        </div>
+        <div class="kpi-pill formaciones">
+          <span class="kpi-label">Formaciones</span>
+          <span class="kpi-value" id="kpiFormaciones">18</span>
+        </div>
+      </section>
     </div>
 
-    <!-- KPIs (Procesos, HIT, Primeros auxilios, Conv. prueba, Conv. venta, Formaciones) -->
-    <section class="kpi-grid">
-      <article class="card">
-        <div class="card-header">
-          <span>Procesos aplicados</span>
-        </div>
-        <div class="kpi-main">
-          <span id="kpiProcesos">84%</span>
-          <span class="kpi-tag">Objetivo 90%</span>
-        </div>
-        <div class="kpi-secondary">
-          +3 pts vs periodo anterior
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-header">
-          <span>HIT (global)</span>
-        </div>
-        <div class="kpi-main">
-          <span id="kpiHit">81%</span>
-          <span class="kpi-tag">Objetivo 88%</span>
-        </div>
-        <div class="kpi-secondary">
-          En mejora en 2 de 6 regiones
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-header">
-          <span>Primeros auxilios</span>
-        </div>
-        <div class="kpi-main">
-          <span id="kpiPrimerosAuxilios">63%</span>
-          <span class="kpi-tag warn">Cobertura insuficiente</span>
-        </div>
-        <div class="kpi-secondary">
-          4 centros sin protocolo actualizado
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-header">
-          <span>Conversión a prueba</span>
-        </div>
-        <div class="kpi-main">
-          <span id="kpiConvPrueba">39%</span>
-          <span class="kpi-tag">+5 pts crecimiento</span>
-        </div>
-        <div class="kpi-secondary">
-          Ratio sobre visitas cualificadas
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-header">
-          <span>Conversión a venta</span>
-        </div>
-        <div class="kpi-main">
-          <span id="kpiConvVenta">27%</span>
-          <span class="kpi-tag warn">Potencial seguimiento</span>
-        </div>
-        <div class="kpi-secondary">
-          Ticket medio: 1.430 € · Devoluciones 3,2%
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-header">
-          <span>Formaciones realizadas</span>
-        </div>
-        <div class="kpi-main">
-          <span id="kpiFormaciones">18</span>
-          <span class="kpi-tag">Plan 24 / año</span>
-        </div>
-        <div class="kpi-secondary">
-          6 pendientes de planificar · Foco en procesos y primeros auxilios
-        </div>
-      </article>
-    </section>
-
-    <!-- 4 GRÁFICAS DEL DASHBOARD -->
+    <!-- GRÁFICAS DEL DASHBOARD -->
     <section class="grid-main">
       <!-- 1. Evolución mensual (barras + curvas: Procesos, HIT, Conv. prueba, Conv. venta) -->
       <article class="card">
@@ -498,6 +542,17 @@
           <canvas id="chartDelegados"></canvas>
         </div>
       </article>
+
+      <!-- 5. % global de Procesos, HIT y ARR -->
+      <article class="card">
+        <h3>Indicadores globales · Procesos, HIT y ARR</h3>
+        <p class="card-sub">
+          % global de procesos aplicados, HIT y ARR en el conjunto de centros evaluados
+        </p>
+        <div class="chart-container">
+          <canvas id="chartProcesosHitArr"></canvas>
+        </div>
+      </article>
     </section>
   </main>
 
@@ -515,14 +570,14 @@
             type: 'bar',
             label: '% Procesos aplicados',
             data: [78, 80, 81, 82, 83, 84, 85, 86, 87, 88, 87, 88],
-            backgroundColor: 'rgba(239,68,68,0.7)',
+            backgroundColor: 'rgba(100,116,139,0.9)', // slate
             borderRadius: 6
           },
           {
             type: 'line',
             label: '% HIT',
             data: [76, 77, 78, 79, 80, 81, 82, 83, 84, 83, 82, 82],
-            borderColor: '#38bdf8',
+            borderColor: '#ef4444', // rojo
             borderWidth: 2,
             tension: 0.35,
             fill: false,
@@ -532,7 +587,7 @@
             type: 'line',
             label: '% Conversión a prueba',
             data: [32, 33, 34, 35, 36, 37, 38, 39, 40, 40, 39, 40],
-            borderColor: '#a855f7',
+            borderColor: '#0ea5e9', // cyan
             borderWidth: 2,
             tension: 0.35,
             fill: false,
@@ -542,7 +597,7 @@
             type: 'line',
             label: '% Conversión a venta',
             data: [21, 22, 23, 24, 25, 26, 27, 27, 28, 27, 26, 27],
-            borderColor: '#f97316',
+            borderColor: '#a855f7', // violeta
             borderWidth: 2,
             tension: 0.35,
             fill: false,
@@ -588,9 +643,9 @@
           data: [72, 19, 9],
           borderWidth: 0,
           backgroundColor: [
-            'rgba(239,68,68,0.9)',   // Realizadas (rojo)
-            'rgba(249,115,22,0.9)',  // Pendientes (naranja)
-            'rgba(148,163,184,0.9)'  // Anuladas (gris)
+            'rgba(59,130,246,0.9)',   // azul
+            'rgba(234,179,8,0.9)',    // amarillo
+            'rgba(239,68,68,0.9)'     // rojo
           ]
         }]
       },
@@ -682,11 +737,11 @@
             label: 'Índice global delegado',
             data: dataIndiceGlobal,
             backgroundColor: [
-              'rgba(239,68,68,0.9)',
-              'rgba(59,130,246,0.9)',
-              'rgba(168,85,247,0.9)',
-              'rgba(249,115,22,0.9)',
-              'rgba(234,179,8,0.9)'
+              'rgba(59,130,246,0.9)',   // azul
+              'rgba(239,68,68,0.9)',    // rojo
+              'rgba(14,165,233,0.9)',   // cyan
+              'rgba(168,85,247,0.9)',   // violeta
+              'rgba(234,179,8,0.9)'     // amarillo
             ],
             borderRadius: 5
           }
@@ -726,6 +781,58 @@
       }
     });
 
+    // 5. % global de Procesos, HIT y ARR
+    const ctxPHA = document.getElementById('chartProcesosHitArr').getContext('2d');
+    const chartProcesosHitArr = new Chart(ctxPHA, {
+      type: 'bar',
+      data: {
+        labels: ['Procesos', 'HIT', 'ARR'],
+        datasets: [{
+          label: '% global',
+          data: [84, 81, 68],
+          backgroundColor: [
+            'rgba(59,130,246,0.9)',   // procesos - azul
+            'rgba(239,68,68,0.9)',    // HIT - rojo
+            'rgba(168,85,247,0.9)'    // ARR - violeta
+          ],
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: '#e5e7eb',
+              font: { size: 11 }
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: ctx => ctx.parsed.y + '%'
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: '#9ca3af', font: { size: 10 } },
+            grid: { color: 'rgba(31,41,55,0.35)' }
+          },
+          y: {
+            ticks: {
+              color: '#9ca3af',
+              font: { size: 10 },
+              callback: value => value + '%'
+            },
+            grid: { color: 'rgba(31,41,55,0.35)' },
+            suggestedMin: 50,
+            suggestedMax: 100
+          }
+        }
+      }
+    });
+
     // ------- LÓGICA INTERACTIVA EXTRA --------
 
     // Helper toast
@@ -745,42 +852,29 @@
     const btnExportHtml = document.getElementById('btnExportHtml');
     const btnSyncCloud = document.getElementById('btnSyncCloud');
     const btnToggleTheme = document.getElementById('btnToggleTheme');
-    const selectPeriodo = document.getElementById('selectPeriodo');
-    const selectTipoCentro = document.getElementById('selectTipoCentro');
+    const selectCentro = document.getElementById('selectCentro');
+    const selectDelegado = document.getElementById('selectDelegado');
     const resumenSub = document.getElementById('resumenSub');
 
-    const CONFIG_KEY = 'ccAudioConfig';
+    const CONFIG_KEY = 'gestionarAudioConfig';
+
+    function textoCentro(value) {
+      const opt = selectCentro.querySelector(`option[value="${value}"]`);
+      return opt ? opt.textContent : 'Centro: Todos';
+    }
+
+    function textoDelegado(value) {
+      const opt = selectDelegado.querySelector(`option[value="${value}"]`);
+      return opt ? opt.textContent : 'Delegado: Todos';
+    }
 
     function actualizarTextoResumen() {
-      let periodoTexto = '';
-      switch (selectPeriodo.value) {
-        case '12':
-          periodoTexto = 'últimos 12 meses';
-          break;
-        case '3':
-          periodoTexto = 'últimos 3 meses';
-          break;
-        case '1':
-          periodoTexto = 'último mes';
-          break;
-      }
-
-      let tipoTexto = '';
-      switch (selectTipoCentro.value) {
-        case 'todos':
-          tipoTexto = 'todos los tipos de centro';
-          break;
-        case 'propio':
-          tipoTexto = 'centros propios';
-          break;
-        case 'franquicia':
-          tipoTexto = 'franquicias';
-          break;
-      }
+      const centroText = textoCentro(selectCentro.value);
+      const delegadoText = textoDelegado(selectDelegado.value);
 
       resumenSub.textContent =
         'Visión rápida de procesos, HIT, primeros auxilios, conversiones y formaciones · ' +
-        periodoTexto + ' · ' + tipoTexto + ' (datos demo)';
+        centroText + ' · ' + delegadoText + ' (datos demo)';
     }
 
     function applyTheme(theme) {
@@ -796,8 +890,8 @@
     function saveConfig() {
       const cfg = {
         theme: document.body.classList.contains('light-theme') ? 'light' : 'dark',
-        periodo: selectPeriodo.value,
-        tipoCentro: selectTipoCentro.value
+        centro: selectCentro.value,
+        delegado: selectDelegado.value
       };
       try {
         localStorage.setItem(CONFIG_KEY, JSON.stringify(cfg));
@@ -819,8 +913,8 @@
 
       if (cfg) {
         if (cfg.theme) applyTheme(cfg.theme);
-        if (cfg.periodo) selectPeriodo.value = cfg.periodo;
-        if (cfg.tipoCentro) selectTipoCentro.value = cfg.tipoCentro;
+        if (cfg.centro) selectCentro.value = cfg.centro;
+        if (cfg.delegado) selectDelegado.value = cfg.delegado;
       } else {
         applyTheme('dark');
       }
@@ -849,7 +943,7 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'control-center-audio-dashboard.html';
+        a.download = 'gestionar-audio-dashboard-general.html';
         document.body.appendChild(a);
         a.click();
         a.remove();
@@ -867,12 +961,12 @@
     });
 
     // Cambios de filtros
-    selectPeriodo.addEventListener('change', () => {
+    selectCentro.addEventListener('change', () => {
       actualizarTextoResumen();
       saveConfig();
     });
 
-    selectTipoCentro.addEventListener('change', () => {
+    selectDelegado.addEventListener('change', () => {
       actualizarTextoResumen();
       saveConfig();
     });
